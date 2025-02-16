@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uff_app/features/login/presentation/widgets/gradient.dart';
 import 'package:uff_app/features/login/presentation/widgets/login_modal.dart';
+import 'package:uff_app/features/login/presentation/widgets/registermodal.dart';
 import '../widgets/login_button.dart'; // Importamos el widget LoginButton
 
 class LoginScreen extends StatelessWidget {
@@ -71,7 +72,18 @@ class LoginScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       // Acción al presionar "REGISTRO"
-                      print("Ir a Registro");
+                      // Aquí abrimos el modal de registro
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(30)),
+                        ),
+                        backgroundColor: Colors.transparent,
+                        builder: (context) =>
+                            RegisterModal(), // Modal de Registro
+                      );
                     },
                     child: Text(
                       'REGISTRO',

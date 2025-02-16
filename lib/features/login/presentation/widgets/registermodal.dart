@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uff_app/services/auth_service.dart';
 
-class LoginModal extends StatefulWidget {
+class RegisterModal extends StatefulWidget {
   @override
-  _LoginModalState createState() => _LoginModalState();
+  _RegisterModalState createState() => _RegisterModalState();
 }
 
-class _LoginModalState extends State<LoginModal> {
+class _RegisterModalState extends State<RegisterModal> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final AuthService _authService = AuthService();
 
-  void _login() async {
+  void _register() async {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
 
@@ -21,13 +21,13 @@ class _LoginModalState extends State<LoginModal> {
       return;
     }
 
-    var user = await _authService.signInWithEmailAndPassword(email, password);
+    var user = await _authService.registerWithEmailAndPassword(email, password);
 
     if (user != null) {
       Navigator.pop(context); // Cierra el modal
-      print("Inicio de sesión exitoso: ${user.email}");
+      print("Registro exitoso: ${user.email}");
     } else {
-      _showError("Error al iniciar sesión. Verifica tus datos.");
+      _showError("Error al registrarse. Intenta nuevamente.");
     }
   }
 
@@ -43,17 +43,14 @@ class _LoginModalState extends State<LoginModal> {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.black,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(40),
-            topRight: Radius.circular(40),
-          ),
+          borderRadius: BorderRadius.circular(20),
         ),
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Iniciar Sesión",
+              "Registrarse",
               style: GoogleFonts.inter(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -96,24 +93,12 @@ class _LoginModalState extends State<LoginModal> {
                 ),
                 backgroundColor: Colors.red,
               ),
-              onPressed: _login,
-              child: Text("Ingresar"),
+              onPressed: _register,
+              child: Text("Registrarse"),
             ),
           ],
         ),
       ),
     );
   }
-}
-
-void showLoginModal(BuildContext context) {
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true, // Permite expandirse completamente
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-    ),
-    backgroundColor: Colors.transparent,
-    builder: (context) => LoginModal(),
-  );
 }

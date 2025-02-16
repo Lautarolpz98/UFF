@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "957128503993",
+    "project_id": "ufapp-bb146",
+    "storage_bucket": "ufapp-bb146.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957128503993:android:7194b211d96f9b3aaea168",
+        "android_client_info": {
+          "package_name": "com.example.uff_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0Dq1ORJq2rSHL9TvxCDq1HFJSmfNiXxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

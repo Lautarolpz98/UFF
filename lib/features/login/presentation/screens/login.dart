@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uff_app/features/login/presentation/widgets/gradient.dart';
+import 'package:uff_app/features/login/presentation/widgets/login_modal.dart';
 import '../widgets/login_button.dart'; // Importamos el widget LoginButton
 
 class LoginScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class LoginScreen extends StatelessWidget {
 
           // Contenido de la pantalla (puedes agregar más widgets aquí)
           Padding(
-            padding: const EdgeInsets.only(top: 0),
+            padding: const EdgeInsets.only(top: 0, right: 25),
             child: Column(
               children: [
                 Center(
@@ -24,7 +25,7 @@ class LoginScreen extends StatelessWidget {
                       Text(
                         'UFF',
                         style: GoogleFonts.inter(
-                            fontSize: 200,
+                            fontSize: 150,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontStyle: FontStyle.italic),
@@ -45,7 +46,7 @@ class LoginScreen extends StatelessWidget {
             child: LoginButton(
               onPressed: () {
                 // Acción al presionar el botón
-                print("Iniciar sesión");
+                showLoginModal(context);
               },
             ),
           ),
@@ -78,8 +79,7 @@ class LoginScreen extends StatelessWidget {
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.red, // Color rojo
-                        letterSpacing:
-                            1.2, // Espaciado para un toque más llamativo
+                        // Espaciado para un toque más llamativo
                       ),
                     ),
                   ),
